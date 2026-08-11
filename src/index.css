@@ -1,11 +1,11 @@
 @import "tailwindcss";
 
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   font-family: Inter, Arial, sans-serif;
   background: #f1f5f9;
-}
-
-* {
-  box-sizing: border-box;
 }

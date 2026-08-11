@@ -16,7 +16,7 @@ function TransactionForm({ addTransaction }) {
     }
 
     addTransaction({
-      description,
+      description: description.trim(),
       amount: Number(amount),
       date,
       type,
@@ -30,19 +30,17 @@ function TransactionForm({ addTransaction }) {
 
   return (
     <div className="bg-white rounded-2xl shadow-xl p-6 mb-8">
-
       <h2 className="text-2xl font-bold mb-6">
         Add Transaction
       </h2>
 
       <div className="space-y-4">
-
         <input
           type="text"
           placeholder="Description"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
-          className="w-full border rounded-lg p-3"
+          className="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-green-500"
         />
 
         <input
@@ -50,34 +48,32 @@ function TransactionForm({ addTransaction }) {
           placeholder="Amount"
           value={amount}
           onChange={(e) => setAmount(e.target.value)}
-          className="w-full border rounded-lg p-3"
+          className="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-green-500"
         />
 
         <input
           type="date"
           value={date}
           onChange={(e) => setDate(e.target.value)}
-          className="w-full border rounded-lg p-3"
+          className="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-green-500"
         />
 
         <select
           value={type}
           onChange={(e) => setType(e.target.value)}
-          className="w-full border rounded-lg p-3"
+          className="w-full border border-gray-300 rounded-lg p-3"
         >
-          <option>Income</option>
-          <option>Expense</option>
+          <option value="Income">Income</option>
+          <option value="Expense">Expense</option>
         </select>
 
         <button
           onClick={handleSubmit}
-          className="w-full bg-green-600 text-white py-3 rounded-lg hover:bg-green-700"
+          className="w-full bg-green-600 text-white py-3 rounded-lg hover:bg-green-700 transition"
         >
           Add Transaction
         </button>
-
       </div>
-
     </div>
   );
 }

@@ -6,7 +6,7 @@ function SearchBar({ search, setSearch }) {
         placeholder="🔍 Search transactions..."
         value={search}
         onChange={(e) => setSearch(e.target.value)}
-        className="w-full border rounded-lg p-3"
+        className="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-green-500"
       />
     </div>
   );

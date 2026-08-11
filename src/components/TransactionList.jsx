@@ -4,35 +4,42 @@ function TransactionList({
 }) {
   return (
     <div className="bg-white rounded-2xl shadow-xl p-6">
-
       <h2 className="text-2xl font-bold mb-6">
         Transactions
       </h2>
 
       {transactions.length === 0 ? (
-        <p className="text-gray-500">
+        <p className="text-gray-500 text-center py-6">
           No transactions yet.
         </p>
       ) : (
         <div className="space-y-3">
-
           {transactions.map((transaction, index) => (
             <div
               key={index}
-              className="flex justify-between items-center border rounded-lg p-4"
+              className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 border rounded-lg p-4"
             >
               <div>
-                <h3 className="font-semibold">
+                <h3 className="font-semibold text-lg">
                   {transaction.description}
                 </h3>
 
                 <p className="text-gray-500">
                   {transaction.date}
                 </p>
+
+                <p
+                  className={
+                    transaction.type === "Income"
+                      ? "text-green-600 text-sm font-semibold"
+                      : "text-red-600 text-sm font-semibold"
+                  }
+                >
+                  {transaction.type}
+                </p>
               </div>
 
               <div className="flex items-center gap-4">
-
                 <span
                   className={
                     transaction.type === "Income"
@@ -40,24 +47,21 @@ function TransactionList({
                       : "text-red-600 font-bold"
                   }
                 >
-                  {transaction.type === "Income" ? "+" : "-"}
-                  Rs. {transaction.amount}
+                  {transaction.type === "Income" ? "+" : "-"} Rs.{" "}
+                  {Number(transaction.amount).toFixed(2)}
                 </span>
 
                 <button
                   onClick={() => deleteTransaction(index)}
-                  className="bg-red-500 text-white px-3 py-2 rounded-lg hover:bg-red-600"
+                  className="bg-red-500 text-white px-3 py-2 rounded-lg hover:bg-red-600 transition"
                 >
                   Delete
                 </button>
-
               </div>
             </div>
           ))}
-
         </div>
       )}
-
     </div>
   );
 }
